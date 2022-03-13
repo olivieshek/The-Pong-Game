@@ -1,6 +1,5 @@
 import pygame
 
-# class Ball
 class Ball:
     def __init__(self, window):
         self.image = pygame.Surface((15, 15))
