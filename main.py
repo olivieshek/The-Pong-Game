@@ -6,6 +6,7 @@ import ball as bl
 pygame.init()
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('The Pong Game')
+background = pygame.image.load('assets/background.png')
 playerImage = Image.open('assets/player.png')
 player_PGimage = pygame.image.load('assets/player.png')
 player = pd.Paddle(
@@ -25,6 +26,7 @@ ball = bl.Ball(window)
 running = True
 while running:
     window.fill((0, 0, 0))
+    window.blit(background, (0, 0))
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
