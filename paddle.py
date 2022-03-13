@@ -1,5 +1,6 @@
 import pygame
 
+# wo
 class Paddle:
     def __init__(self, window, x_pos, objImage):
         self.image = objImage
