@@ -3,7 +3,7 @@ from PIL import Image
 import paddle as pd
 import ball as bl
 
-pygame.init() # инициализируем окно
+pygame.init()
 window = pygame.display.set_mode((800, 600))
 pygame.display.set_caption('The Pong Game')
 playerImage = Image.open('assets/player.png')
