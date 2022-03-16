@@ -25,8 +25,9 @@ while running:
     player.draw()
     player.controls(keys)
     opponent.draw()
-    # opponent.controls()
+    opponent.controls(keys)
     ball.draw()
+    ball.movement()
     pygame.display.flip()
     clock.tick(60)
 
