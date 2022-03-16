@@ -31,9 +31,9 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP or event.key == ord('w'):
+            if event.key == pygame.K_UP or event.key == ord('w') or event.key == ord('ц'):
                 player.rect.y -= player.speed
-            if event.key == pygame.K_DOWN or event.key == ord('s'):
+            if event.key == pygame.K_DOWN or event.key == ord('s') or event.key == ord('ы'):
                 player.rect.y += player.speed
 
     player.draw()
