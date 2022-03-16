@@ -31,9 +31,12 @@ class Paddle:
     def draw(self):
         self.window.blit(self.image, self.rect)
 
-    def controls(self, keys):
+    def controls(self, keys, ball):
         if self.isAuto:
-            pass
+            if self.rect.y < ball.rect.y:
+                self.rect.y += self.velocity
+            else:
+                self.rect.y -= self.velocity
         else:
             if keys[self.key_up]:
                 self.rect.y -= self.velocity
