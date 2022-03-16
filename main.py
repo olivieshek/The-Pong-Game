@@ -23,11 +23,11 @@ while running:
         keys = pygame.key.get_pressed()
 
     player.draw()
-    player.controls(keys)
+    player.controls(keys, ball)
     opponent.draw()
-    opponent.controls(keys)
+    opponent.controls(keys, ball)
     ball.draw()
-    ball.movement()
+    ball.movement(player, opponent)
     pygame.display.flip()
     clock.tick(60)
 
