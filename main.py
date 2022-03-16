@@ -1,27 +1,16 @@
 import pygame
 from PIL import Image
-import paddle as pd
-import ball as bl
+from paddle import Paddle
+from ball import Ball
 
 pygame.init()
 window = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
 pygame.display.set_caption('The Pong Game')
 background = pygame.image.load('assets/background.png')
-playerImage = Image.open('assets/player.png')
-player_PGimage = pygame.image.load('assets/player.png')
-player = pd.Paddle(
-    window,
-    window.get_width() / 50 + playerImage.width / 2,
-    player_PGimage
-)
-opponentImage = Image.open('assets/opponent.png')
-opponent_PGimage = pygame.image.load('assets/opponent.png')
-opponent = pd.Paddle(
-    window,
-    window.get_width() - window.get_width() / 50 - opponentImage.width / 2,
-    opponent_PGimage
-)
-ball = bl.Ball(window)
+player = Paddle(window)
+opponent = Paddle(window, isAuto=True)
+ball = Ball(window)
 
 running = True
 while running:
@@ -30,13 +19,15 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_UP or event.key == ord('w') or event.key == ord('ц'):
-                player.rect.y -= player.speed
-            if event.key == pygame.K_DOWN or event.key == ord('s') or event.key == ord('ы'):
-                player.rect.y += player.speed
+        
+        keys = pygame.key.get_pressed()
 
     player.draw()
+    player.controls(keys)
     opponent.draw()
+    # opponent.controls()
     ball.draw()
     pygame.display.flip()
+    clock.tick(60)
+
+pygame.quit()
