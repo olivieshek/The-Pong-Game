@@ -5,7 +5,7 @@ class Ball:
         self,
         window,
         velocity_x=6,
-        velocity_y=-6
+        velocity_y=-6,
     ):
         self.image = pygame.Surface((15, 15))
         self.image.fill((255, 255, 255))
@@ -23,18 +23,27 @@ class Ball:
     def movement(self, player, opponent):
         self.rect.x += self.velocity_x
         self.rect.y += self.velocity_y
-        if self.rect.right >= self.window_rect.right:
-            self.velocity_x *= -1
-        if self.rect.left <= self.window_rect.left:
-            self.velocity_x *= -1
+        # коллизии с верхом и низом экрана
         if self.rect.top <= self.window_rect.top:
             self.velocity_y *= -1
         if self.rect.bottom >= self.window_rect.bottom:
             self.velocity_y *= -1
 
+        if self.rect.left <= self.window_rect.left:
+            self.rect.centerx = self.window_rect.centerx
+            self.rect.centery = self.window_rect.centery
+            opponent.score += 1
+        if self.rect.right >= self.window_rect.right:
+            self.rect.centerx = self.window_rect.centerx
+            self.rect.centery = self.window_rect.centery
+            player.score += 1
+
+        # коллизии с ракетками
         if self.rect.colliderect(player.rect):
             self.velocity_x *= -1
             self.velocity_y *= -1
+            pygame.mixer.music.play()
         if self.rect.colliderect(opponent.rect):
             self.velocity_x *= -1
             self.velocity_y *= -1
+            pygame.mixer.music.play()
