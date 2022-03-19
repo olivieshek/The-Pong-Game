@@ -13,7 +13,7 @@ clock = pygame.time.Clock()
 pygame.display.set_caption('The Pong Game')
 # background = pygame.image.load('assets/background.png')
 player = Paddle(window)
-opponent = Paddle(window, isAuto=True)
+opponent = Paddle(window, isAuto=True, velocity=5)
 ball = Ball(window)
 player_score = Score(
     window,
