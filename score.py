@@ -1,7 +1,7 @@
 import pygame
 
 pygame.font.init()
-myFont = pygame.font.SysFont('Arial', 30)
+myFont = pygame.font.SysFont('assets/Press_Start_2P-Regular.ttf', 48)
 
 
 class Score:
